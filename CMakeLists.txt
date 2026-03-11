@@ -72,8 +72,7 @@ function(add_xxhash_library TARGET_NAME LIB_TYPE)
         set_target_properties(${TARGET_NAME} PROPERTIES OUTPUT_NAME "xxhash-static")
     else()
         set_target_properties(${TARGET_NAME} PROPERTIES
-            OUTPUT_NAME "xxhash"
-            SOVERSION ${XXHASH_VERSION_MAJOR})
+            OUTPUT_NAME "xxhash")
         target_compile_definitions(${TARGET_NAME} PRIVATE XXH_EXPORT)
         if(WIN32)
             target_compile_definitions(${TARGET_NAME} PUBLIC XXH_IMPORT)
