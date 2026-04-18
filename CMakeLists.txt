@@ -29,6 +29,11 @@ if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
     add_compile_options("/Brepro")
     add_link_options("/Brepro")
     add_compile_options("/pathmap:${CMAKE_CURRENT_SOURCE_DIR}=.")
+    # add_link_options only reaches link.exe (executables + shared libs).
+    # Static archives go through lib.exe, which needs /Brepro via the
+    # separate CMAKE_STATIC_LINKER_FLAGS variable — otherwise the .lib
+    # picks up a per-run timestamp in its archive header.
+    string(APPEND CMAKE_STATIC_LINKER_FLAGS " /Brepro")
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Android")
