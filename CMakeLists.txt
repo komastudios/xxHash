@@ -44,7 +44,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Android")
 
     add_compile_options(-fsigned-char)
     add_link_options("-Wl,-z,max-page-size=16384")
-elseif(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "^(iOS|tvOS)$")
     set(BUILD_SHARED OFF)
 
     set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG")
